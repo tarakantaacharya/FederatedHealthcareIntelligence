@@ -1,0 +1,831 @@
+{
+  "timestamp": "2026-03-01 17:05:00",
+  "configuration": {
+    "n_hospitals": 3,
+    "n_rounds": 5,
+    "epochs_per_round": 2,
+    "epsilon_per_round": 1.0
+  },
+  "baseline_results": {
+    "mode": "batch",
+    "n_hospitals": 3,
+    "n_rounds": 5,
+    "total_time": 57.68866991996765,
+    "final_global_loss": 5.348958680123993,
+    "cumulative_epsilon": 5.0,
+    "round_results": [
+      {
+        "round": 1,
+        "global_loss": 5.315158161250028,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 1.0,
+        "participating_hospitals": 3,
+        "round_time": 13.861268043518066,
+        "hospital_metrics": [
+          {
+            "train_loss": 5.131648778915405,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 5.565590143203735,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 5.436560121449557,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 4.390408277511597,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 5.377265583385121,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.8922765254974365,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "global_loss": 5.27806340564381,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 2.0,
+        "participating_hospitals": 3,
+        "round_time": 11.31974172592163,
+        "hospital_metrics": [
+          {
+            "train_loss": 5.12200006571683,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 4.166412830352783,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 5.32986010204662,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.6174111366271973,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 5.3823300491679795,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.5238373279571533,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "global_loss": 5.305908062241294,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 3.0,
+        "participating_hospitals": 3,
+        "round_time": 10.679312944412231,
+        "hospital_metrics": [
+          {
+            "train_loss": 5.164845835078847,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.6106436252593994,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 5.226105039769953,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.5111865997314453,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 5.5267733118750835,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.5454602241516113,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "global_loss": 5.32053114789905,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 4.0,
+        "participating_hospitals": 3,
+        "round_time": 10.859880447387695,
+        "hospital_metrics": [
+          {
+            "train_loss": 5.146003018726002,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.563680410385132,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 5.390467231923884,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.699634075164795,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 5.425123193047264,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.5855531692504883,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "global_loss": 5.348958680123993,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 5.0,
+        "participating_hospitals": 3,
+        "round_time": 10.963468790054321,
+        "hospital_metrics": [
+          {
+            "train_loss": 5.149204297499224,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.567939043045044,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 5.406861847097224,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.564774513244629,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 5.490809895775535,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "batch",
+            "training_time": 3.81874680519104,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      }
+    ]
+  },
+  "strict_results": {
+    "mode": "strict",
+    "n_hospitals": 3,
+    "n_rounds": 5,
+    "total_time": 62.937989473342896,
+    "final_global_loss": 128.40826242620292,
+    "cumulative_epsilon": 5.0,
+    "round_results": [
+      {
+        "round": 1,
+        "global_loss": 143.48119510303843,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 1.0,
+        "participating_hospitals": 3,
+        "round_time": 11.070065259933472,
+        "hospital_metrics": [
+          {
+            "train_loss": 142.6095693761652,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 3.679042339324951,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 158.72539242831144,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 3.6469502449035645,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 129.10862350463867,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 3.731076240539551,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      },
+      {
+        "round": 2,
+        "global_loss": 125.484205419367,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 2.0,
+        "participating_hospitals": 3,
+        "round_time": 11.892279386520386,
+        "hospital_metrics": [
+          {
+            "train_loss": 115.2793960571289,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 3.6635468006134033,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 125.7044747092507,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 3.902372121810913,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 135.46874549172142,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 4.31334662437439,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      },
+      {
+        "round": 3,
+        "global_loss": 128.3512235699278,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 3.0,
+        "participating_hospitals": 3,
+        "round_time": 14.031889915466309,
+        "hospital_metrics": [
+          {
+            "train_loss": 125.40472550825639,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 6.690337657928467,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 135.91682572798297,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 3.737993001937866,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 123.73211947354403,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 3.589505910873413,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      },
+      {
+        "round": 4,
+        "global_loss": 128.81151395855528,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 4.0,
+        "participating_hospitals": 3,
+        "round_time": 11.663659572601318,
+        "hospital_metrics": [
+          {
+            "train_loss": 115.27516208995472,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 4.186668395996094,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 145.04086338390005,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 3.7285828590393066,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 126.11851640181108,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 3.7363786697387695,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      },
+      {
+        "round": 5,
+        "global_loss": 128.40826242620292,
+        "avg_epsilon_per_hospital": 1.0,
+        "cumulative_epsilon": 5.0,
+        "participating_hospitals": 3,
+        "round_time": 14.274124145507812,
+        "hospital_metrics": [
+          {
+            "train_loss": 117.6093148318204,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 4.044955730438232,
+            "hospital_id": 0,
+            "success": true
+          },
+          {
+            "train_loss": 125.99803057583895,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 4.89980149269104,
+            "hospital_id": 1,
+            "success": true
+          },
+          {
+            "train_loss": 141.61744187094948,
+            "epochs": 2,
+            "epsilon_spent": 1.0,
+            "epsilon_budget": 1.0,
+            "dp_enabled": true,
+            "clip_norm": 1.0,
+            "noise_multiplier": 0.5,
+            "output_size": 6,
+            "horizons": {
+              "0": "6h",
+              "1": "12h",
+              "2": "24h",
+              "3": "48h",
+              "4": "72h",
+              "5": "168h"
+            },
+            "dp_mode": "strict_per_sample",
+            "training_time": 5.3163816928863525,
+            "hospital_id": 2,
+            "success": true
+          }
+        ]
+      }
+    ]
+  },
+  "comparison": {
+    "baseline_loss": 5.348958680123993,
+    "strict_loss": 128.40826242620292,
+    "loss_difference_pct": 2300.6216930287883,
+    "baseline_time": 57.68866991996765,
+    "strict_time": 62.937989473342896,
+    "time_multiplier": 1.0909939431894982,
+    "baseline_epsilon": 5.0,
+    "strict_epsilon": 5.0,
+    "epsilon_multiplier": 1.0
+  },
+  "acceptance": {
+    "criteria": {
+      "convergence_difference_pct": {
+        "value": 2300.6216930287883,
+        "threshold": 15.0,
+        "pass": false
+      },
+      "runtime_slowdown": {
+        "value": 1.0909939431894982,
+        "threshold": 3.0,
+        "pass": true
+      },
+      "epsilon_within_budget": {
+        "value": 5.0,
+        "threshold": 5.0,
+        "pass": true
+      },
+      "no_mpc_failures": {
+        "value": "N/A",
+        "threshold": "None",
+        "pass": true
+      },
+      "no_serialization_errors": {
+        "value": "N/A",
+        "threshold": "None",
+        "pass": true
+      }
+    },
+    "all_pass": false,
+    "decision": "REJECTED"
+  }
+}

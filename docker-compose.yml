@@ -1,0 +1,77 @@
+services:
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: federated_healthcare_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: federated_password
+      MYSQL_DATABASE: federated_healthcare
+    ports:
+      - "3307:3306"
+    volumes:
+      - "D:/Program Files/federated-healthcare-data/mysql:/var/lib/mysql"
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - federated_network
+
+  # Backend (FastAPI with HTTP for development)
+  backend:
+    build: ./backend
+    container_name: federated_healthcare_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+      - "D:/Program Files/federated-healthcare-data/backend_storage:/app/storage"
+    environment:
+      DATABASE_URL: mysql+pymysql://root:federated_password@db:3306/federated_healthcare
+      SECRET_KEY: "development-secret-key-change-in-production"
+      DEBUG: "true"
+      BLOCKCHAIN_RPC_URL: http://ganache:8545
+    depends_on:
+      - db
+      - ganache
+    networks:
+      - federated_network
+    command: >
+      uvicorn app.main:app
+      --host 0.0.0.0
+      --port 8000
+      --reload
+
+  # Frontend (React)
+  frontend:
+    build: ./frontend
+    container_name: federated_healthcare_frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      REACT_APP_API_URL: http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - federated_network
+
+  # Blockchain Node (Ganache)
+  ganache:
+    image: trufflesuite/ganache:latest
+    container_name: federated_healthcare_ganache
+    ports:
+      - "8545:8545"
+    command: >
+      --mnemonic "your test mnemonic here"
+      --accounts 10
+      --defaultBalanceEther 100
+      --gasLimit 10000000
+    networks:
+      - federated_network
+
+networks:
+  federated_network:
+    driver: bridge

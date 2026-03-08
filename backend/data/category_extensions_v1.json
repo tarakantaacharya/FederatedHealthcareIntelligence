@@ -1,0 +1,415 @@
+{
+  "version": "1.0",
+  "description": "Treatment category-specific field extensions for canonical schema",
+  "created_at": "2024-01-15",
+  
+  "categories": {
+    "icu": {
+      "name": "Intensive Care Unit (ICU)",
+      "description": "Critical care specific metrics",
+      "fields": {
+        "ventilator_usage": {
+          "type": "integer",
+          "description": "Number of ventilators in use",
+          "min": 0,
+          "required": false
+        },
+        "ventilator_capacity": {
+          "type": "integer",
+          "description": "Total ventilator capacity",
+          "min": 0,
+          "required": false
+        },
+        "sedation_level_avg": {
+          "type": "float",
+          "description": "Average sedation level (RASS scale: -5 to +4)",
+          "min": -5.0,
+          "max": 4.0,
+          "required": false
+        },
+        "monitoring_equipment_usage": {
+          "type": "integer",
+          "description": "Number of monitoring devices in use",
+          "min": 0,
+          "required": false
+        },
+        "dialysis_sessions": {
+          "type": "integer",
+          "description": "Number of dialysis sessions",
+          "min": 0,
+          "required": false
+        },
+        "icu_mortality_rate": {
+          "type": "float",
+          "description": "ICU mortality rate percentage",
+          "min": 0.0,
+          "max": 100.0,
+          "required": false
+        }
+      }
+    },
+    
+    "emergency": {
+      "name": "Emergency Department (ED)",
+      "description": "Emergency room specific metrics",
+      "fields": {
+        "triage_level_1_count": {
+          "type": "integer",
+          "description": "Critical/Resuscitation cases",
+          "min": 0,
+          "required": false
+        },
+        "triage_level_2_count": {
+          "type": "integer",
+          "description": "Emergent cases",
+          "min": 0,
+          "required": false
+        },
+        "triage_level_3_count": {
+          "type": "integer",
+          "description": "Urgent cases",
+          "min": 0,
+          "required": false
+        },
+        "triage_level_4_count": {
+          "type": "integer",
+          "description": "Less urgent cases",
+          "min": 0,
+          "required": false
+        },
+        "triage_level_5_count": {
+          "type": "integer",
+          "description": "Non-urgent cases",
+          "min": 0,
+          "required": false
+        },
+        "ambulance_arrivals": {
+          "type": "integer",
+          "description": "Number of ambulance arrivals",
+          "min": 0,
+          "required": false
+        },
+        "trauma_cases": {
+          "type": "integer",
+          "description": "Number of trauma cases",
+          "min": 0,
+          "required": false
+        },
+        "average_wait_time_minutes": {
+          "type": "float",
+          "description": "Average wait time in minutes",
+          "min": 0.0,
+          "required": false
+        },
+        "left_without_being_seen": {
+          "type": "integer",
+          "description": "Patients who left without being seen",
+          "min": 0,
+          "required": false
+        }
+      }
+    },
+    
+    "opd": {
+      "name": "Outpatient Department (OPD)",
+      "description": "Outpatient clinic metrics",
+      "fields": {
+        "opd_visits": {
+          "type": "integer",
+          "description": "Total OPD visits",
+          "min": 0,
+          "required": false
+        },
+        "new_patient_visits": {
+          "type": "integer",
+          "description": "New patient registrations",
+          "min": 0,
+          "required": false
+        },
+        "follow_up_visits": {
+          "type": "integer",
+          "description": "Follow-up appointments",
+          "min": 0,
+          "required": false
+        },
+        "consultation_time_avg_minutes": {
+          "type": "float",
+          "description": "Average consultation duration in minutes",
+          "min": 0.0,
+          "required": false
+        },
+        "appointments_scheduled": {
+          "type": "integer",
+          "description": "Scheduled appointments",
+          "min": 0,
+          "required": false
+        },
+        "walk_in_patients": {
+          "type": "integer",
+          "description": "Walk-in patients without appointment",
+          "min": 0,
+          "required": false
+        },
+        "no_show_count": {
+          "type": "integer",
+          "description": "Patients who didn't show up",
+          "min": 0,
+          "required": false
+        }
+      }
+    },
+    
+    "ipd": {
+      "name": "Inpatient Department (IPD)",
+      "description": "Inpatient ward metrics",
+      "fields": {
+        "ipd_admissions": {
+          "type": "integer",
+          "description": "Inpatient admissions",
+          "min": 0,
+          "required": false
+        },
+        "ipd_discharges": {
+          "type": "integer",
+          "description": "Inpatient discharges",
+          "min": 0,
+          "required": false
+        },
+        "ipd_bed_occupancy": {
+          "type": "integer",
+          "description": "Occupied inpatient beds",
+          "min": 0,
+          "required": false
+        },
+        "ipd_bed_capacity": {
+          "type": "integer",
+          "description": "Total inpatient bed capacity",
+          "min": 0,
+          "required": false
+        },
+        "average_stay_days": {
+          "type": "float",
+          "description": "Average length of stay in days",
+          "min": 0.0,
+          "required": false
+        },
+        "readmission_count": {
+          "type": "integer",
+          "description": "30-day readmissions",
+          "min": 0,
+          "required": false
+        },
+        "complications_count": {
+          "type": "integer",
+          "description": "Post-admission complications",
+          "min": 0,
+          "required": false
+        }
+      }
+    },
+    
+    "surgery": {
+      "name": "Surgical Department",
+      "description": "Surgical operations metrics",
+      "fields": {
+        "elective_surgeries": {
+          "type": "integer",
+          "description": "Scheduled elective surgeries",
+          "min": 0,
+          "required": false
+        },
+        "emergency_surgeries": {
+          "type": "integer",
+          "description": "Emergency surgeries",
+          "min": 0,
+          "required": false
+        },
+        "or_utilization_rate": {
+          "type": "float",
+          "description": "Operating room utilization percentage",
+          "min": 0.0,
+          "max": 100.0,
+          "required": false
+        },
+        "average_surgery_duration_minutes": {
+          "type": "float",
+          "description": "Average surgery duration in minutes",
+          "min": 0.0,
+          "required": false
+        },
+        "cancelled_surgeries": {
+          "type": "integer",
+          "description": "Cancelled operations",
+          "min": 0,
+          "required": false
+        },
+        "post_op_complications": {
+          "type": "integer",
+          "description": "Post-operative complications",
+          "min": 0,
+          "required": false
+        },
+        "anesthesia_type_general": {
+          "type": "integer",
+          "description": "General anesthesia cases",
+          "min": 0,
+          "required": false
+        },
+        "anesthesia_type_regional": {
+          "type": "integer",
+          "description": "Regional anesthesia cases",
+          "min": 0,
+          "required": false
+        },
+        "anesthesia_type_local": {
+          "type": "integer",
+          "description": "Local anesthesia cases",
+          "min": 0,
+          "required": false
+        }
+      }
+    },
+    
+    "pediatrics": {
+      "name": "Pediatric Department",
+      "description": "Children's healthcare metrics",
+      "fields": {
+        "pediatric_visits": {
+          "type": "integer",
+          "description": "Pediatric patient visits",
+          "min": 0,
+          "required": false
+        },
+        "nicu_occupancy": {
+          "type": "integer",
+          "description": "Neonatal ICU bed occupancy",
+          "min": 0,
+          "required": false
+        },
+        "nicu_capacity": {
+          "type": "integer",
+          "description": "NICU bed capacity",
+          "min": 0,
+          "required": false
+        },
+        "vaccination_count": {
+          "type": "integer",
+          "description": "Vaccinations administered",
+          "min": 0,
+          "required": false
+        },
+        "well_child_visits": {
+          "type": "integer",
+          "description": "Routine well-child checkups",
+          "min": 0,
+          "required": false
+        },
+        "pediatric_emergency_visits": {
+          "type": "integer",
+          "description": "Pediatric ER visits",
+          "min": 0,
+          "required": false
+        },
+        "age_0_1_count": {
+          "type": "integer",
+          "description": "Infants (0-1 year)",
+          "min": 0,
+          "required": false
+        },
+        "age_1_5_count": {
+          "type": "integer",
+          "description": "Toddlers (1-5 years)",
+          "min": 0,
+          "required": false
+        },
+        "age_5_12_count": {
+          "type": "integer",
+          "description": "Children (5-12 years)",
+          "min": 0,
+          "required": false
+        },
+        "age_12_18_count": {
+          "type": "integer",
+          "description": "Adolescents (12-18 years)",
+          "min": 0,
+          "required": false
+        }
+      }
+    },
+    
+    "cardiology": {
+      "name": "Cardiology Department",
+      "description": "Cardiac care metrics",
+      "fields": {
+        "cardiac_catheterizations": {
+          "type": "integer",
+          "description": "Cardiac catheterization procedures",
+          "min": 0,
+          "required": false
+        },
+        "echocardiograms": {
+          "type": "integer",
+          "description": "Echocardiogram procedures",
+          "min": 0,
+          "required": false
+        },
+        "stress_tests": {
+          "type": "integer",
+          "description": "Cardiac stress tests",
+          "min": 0,
+          "required": false
+        },
+        "pacemaker_implants": {
+          "type": "integer",
+          "description": "Pacemaker implantations",
+          "min": 0,
+          "required": false
+        },
+        "stent_placements": {
+          "type": "integer",
+          "description": "Coronary stent placements",
+          "min": 0,
+          "required": false
+        },
+        "cardiac_arrests": {
+          "type": "integer",
+          "description": "Cardiac arrest incidents",
+          "min": 0,
+          "required": false
+        },
+        "heart_failure_admissions": {
+          "type": "integer",
+          "description": "Heart failure admissions",
+          "min": 0,
+          "required": false
+        },
+        "mi_cases": {
+          "type": "integer",
+          "description": "Myocardial infarction (heart attack) cases",
+          "min": 0,
+          "required": false
+        }
+      }
+    }
+  },
+  
+  "category_combinations": {
+    "description": "Hospitals can enable multiple categories simultaneously",
+    "examples": [
+      ["icu", "emergency"],
+      ["surgery", "icu"],
+      ["pediatrics", "emergency"],
+      ["cardiology", "icu"]
+    ]
+  },
+  
+  "field_prefixes": {
+    "description": "Category fields are prefixed with category name",
+    "format": "{category}_{field_name}",
+    "examples": {
+      "icu_ventilator_usage": "ICU category field",
+      "emergency_triage_level_1_count": "Emergency category field",
+      "pediatrics_vaccination_count": "Pediatrics category field"
+    }
+  }
+}

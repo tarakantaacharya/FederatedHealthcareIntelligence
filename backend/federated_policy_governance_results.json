@@ -1,0 +1,194 @@
+{
+  "test_name": "Federated Privacy Policy Governance Validation",
+  "timestamp": "2026-03-01T12:24:11.542312",
+  "stages": [
+    {
+      "name": "Policy Generation",
+      "hospitals": 3,
+      "rounds": 3,
+      "tests": [
+        {
+          "name": "Policy constraints validated",
+          "passed": true
+        }
+      ],
+      "policy": {
+        "epsilon_per_round": 1.0,
+        "clip_norm": 1.0,
+        "noise_multiplier": 0.5,
+        "max_local_epochs": 2,
+        "max_batch_size": 32,
+        "dp_mode": "batch"
+      }
+    },
+    {
+      "name": "Policy Distribution",
+      "hospitals_received": 3,
+      "distributed_policies": [
+        {
+          "epsilon_per_round": 1.0,
+          "clip_norm": 1.0,
+          "noise_multiplier": 0.5,
+          "max_local_epochs": 2,
+          "max_batch_size": 32,
+          "dp_mode": "batch",
+          "hospital_id": "HOSPITAL_001",
+          "issued_at": "2026-03-01T12:24:11.543307"
+        },
+        {
+          "epsilon_per_round": 1.0,
+          "clip_norm": 1.0,
+          "noise_multiplier": 0.5,
+          "max_local_epochs": 2,
+          "max_batch_size": 32,
+          "dp_mode": "batch",
+          "hospital_id": "HOSPITAL_002",
+          "issued_at": "2026-03-01T12:24:11.544291"
+        },
+        {
+          "epsilon_per_round": 1.0,
+          "clip_norm": 1.0,
+          "noise_multiplier": 0.5,
+          "max_local_epochs": 2,
+          "max_batch_size": 32,
+          "dp_mode": "batch",
+          "hospital_id": "HOSPITAL_003",
+          "issued_at": "2026-03-01T12:24:11.544291"
+        }
+      ]
+    },
+    {
+      "name": "Policy Enforcement",
+      "enforcement_tests": [
+        {
+          "test": "valid_parameters",
+          "epochs": 1,
+          "batch_size": 16,
+          "compliant": true
+        },
+        {
+          "test": "epochs_exceed_policy",
+          "epochs": 3,
+          "batch_size": 16,
+          "compliant": false,
+          "error": "Hospital HOSPITAL_002: epochs (3) exceeds policy (2)"
+        },
+        {
+          "test": "batch_size_exceed_policy",
+          "epochs": 1,
+          "batch_size": 33,
+          "compliant": false,
+          "error": "Hospital HOSPITAL_003: batch_size (33) exceeds policy (32)"
+        }
+      ]
+    },
+    {
+      "name": "Epsilon Accumulation",
+      "rounds": [
+        {
+          "round_number": 1,
+          "epsilon_this_round": 1.0,
+          "accumulated_epsilon": 1.0
+        },
+        {
+          "round_number": 2,
+          "epsilon_this_round": 1.0,
+          "accumulated_epsilon": 2.0
+        },
+        {
+          "round_number": 3,
+          "epsilon_this_round": 1.0,
+          "accumulated_epsilon": 3.0
+        }
+      ],
+      "total_epsilon_per_hospital": 3.0
+    },
+    {
+      "name": "Convergence Stability",
+      "hospitals": [
+        {
+          "hospital_id": "HOSPITAL_001",
+          "rounds": [
+            {
+              "round_number": 1,
+              "loss": 9.417100498907793
+            },
+            {
+              "round_number": 2,
+              "loss": 8.943981895980302
+            },
+            {
+              "round_number": 3,
+              "loss": 8.574729360512325
+            }
+          ]
+        },
+        {
+          "hospital_id": "HOSPITAL_002",
+          "rounds": [
+            {
+              "round_number": 1,
+              "loss": 9.561037026543346
+            },
+            {
+              "round_number": 2,
+              "loss": 8.997909840603585
+            },
+            {
+              "round_number": 3,
+              "loss": 8.511732738330878
+            }
+          ]
+        },
+        {
+          "hospital_id": "HOSPITAL_003",
+          "rounds": [
+            {
+              "round_number": 1,
+              "loss": 9.627766489578843
+            },
+            {
+              "round_number": 2,
+              "loss": 8.940842861116417
+            },
+            {
+              "round_number": 3,
+              "loss": 8.554709738117003
+            }
+          ]
+        }
+      ],
+      "average_convergence_loss": 9.014423383298944
+    },
+    {
+      "name": "Strict DP Prevention",
+      "test_results": [
+        {
+          "test": "strict_dp_blocked",
+          "result": "PASSED",
+          "message": "Strict per-sample DP permanently disabled"
+        },
+        {
+          "test": "batch_dp_only",
+          "result": "PASSED",
+          "dp_mode": "batch"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "total_stages": 6,
+    "status": "PASSED",
+    "hospitals": 3,
+    "rounds": 3,
+    "validation_date": "2026-03-01T12:24:11.548292",
+    "key_findings": {
+      "all_hospitals_enforce_policy": true,
+      "epsilon_accumulation_valid": true,
+      "convergence_stable": true,
+      "strict_dp_disabled": true,
+      "batch_dp_only": true
+    }
+  },
+  "validation_details": {}
+}

@@ -1,0 +1,418 @@
+{
+  "searched_candidates": [
+    "backend\\..\\data\\federated.db",
+    "backend\\data\\federated.db",
+    "data\\federated.db",
+    "backend\\federated.db",
+    "backend\\app.db",
+    "data\\federated.db"
+  ],
+  "db_path": "backend\\..\\data\\federated.db",
+  "pragma_table_info": [
+    {
+      "cid": 0,
+      "name": "id",
+      "type": "INTEGER",
+      "notnull": 1,
+      "dflt_value": null,
+      "pk": 1
+    },
+    {
+      "cid": 1,
+      "name": "hospital_id",
+      "type": "INTEGER",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 2,
+      "name": "dataset_id",
+      "type": "INTEGER",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 3,
+      "name": "round_number",
+      "type": "INTEGER",
+      "notnull": 1,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 4,
+      "name": "round_id",
+      "type": "INTEGER",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 5,
+      "name": "model_path",
+      "type": "VARCHAR(512)",
+      "notnull": 1,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 6,
+      "name": "model_type",
+      "type": "VARCHAR(50)",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 7,
+      "name": "training_type",
+      "type": "VARCHAR(20)",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 8,
+      "name": "model_architecture",
+      "type": "VARCHAR(20)",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 9,
+      "name": "local_loss",
+      "type": "FLOAT",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 10,
+      "name": "local_accuracy",
+      "type": "FLOAT",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 11,
+      "name": "local_mape",
+      "type": "FLOAT",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 12,
+      "name": "local_rmse",
+      "type": "FLOAT",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 13,
+      "name": "local_r2",
+      "type": "FLOAT",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 14,
+      "name": "is_global",
+      "type": "BOOLEAN",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 15,
+      "name": "is_uploaded",
+      "type": "BOOLEAN",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 16,
+      "name": "is_mask_uploaded",
+      "type": "BOOLEAN",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 17,
+      "name": "model_hash",
+      "type": "VARCHAR(128)",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 18,
+      "name": "hash_algorithm",
+      "type": "VARCHAR(50)",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 19,
+      "name": "weights_hash",
+      "type": "VARCHAR(128)",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 20,
+      "name": "training_schema",
+      "type": "JSON",
+      "notnull": 0,
+      "dflt_value": null,
+      "pk": 0
+    },
+    {
+      "cid": 21,
+      "name": "created_at",
+      "type": "DATETIME",
+      "notnull": 0,
+      "dflt_value": "CURRENT_TIMESTAMP",
+      "pk": 0
+    },
+    {
+      "cid": 22,
+      "name": "updated_at",
+      "type": "DATETIME",
+      "notnull": 0,
+      "dflt_value": "CURRENT_TIMESTAMP",
+      "pk": 0
+    }
+  ],
+  "rows": [
+    {
+      "id": 1,
+      "hospital_id": 7,
+      "dataset_id": 1,
+      "round_number": 0,
+      "round_id": null,
+      "model_path": "D:/federated-healthcare/models\\ALEMBIC-TEST-001\\tft_model_dataset_1.pt",
+      "model_type": "tft",
+      "training_type": "LOCAL",
+      "model_architecture": "TFT",
+      "local_loss": 9.760054409503937,
+      "local_accuracy": 0.5,
+      "local_mape": 0.5,
+      "local_rmse": 9.760054409503937,
+      "local_r2": 0.0,
+      "is_global": 0,
+      "is_uploaded": 0,
+      "is_mask_uploaded": 0,
+      "model_hash": null,
+      "hash_algorithm": "sha256",
+      "weights_hash": null,
+      "training_schema": {
+        "required_columns": [
+          "admissions",
+          "bed_occupancy",
+          "discharges",
+          "emergency_wait_time_avg",
+          "er_visits",
+          "flu_cases",
+          "icu_sedation_level_avg",
+          "staff_count"
+        ],
+        "feature_columns": [
+          "admissions",
+          "bed_occupancy",
+          "discharges",
+          "emergency_wait_time_avg",
+          "er_visits",
+          "flu_cases",
+          "icu_sedation_level_avg",
+          "staff_count"
+        ],
+        "excluded_columns": [
+          "timestamp",
+          "group_id",
+          "icu_ventilator_usage",
+          "time_idx"
+        ],
+        "target_column": "icu_ventilator_usage",
+        "num_features": 8,
+        "model_config": {
+          "hidden_size": 64,
+          "attention_head_size": 4,
+          "dropout": 0.1,
+          "learning_rate": 0.001,
+          "num_features": 8,
+          "lookback": 3,
+          "horizon": 1,
+          "target_column": "icu_ventilator_usage",
+          "output_size": 7
+        }
+      },
+      "created_at": "2026-02-26 17:21:23",
+      "updated_at": "2026-02-28 07:52:19"
+    },
+    {
+      "id": 2,
+      "hospital_id": 5,
+      "dataset_id": 4,
+      "round_number": 0,
+      "round_id": null,
+      "model_path": "D:/federated-healthcare/models\\TEST-001\\baseline_model_dataset_4.pkl",
+      "model_type": "sklearn_baseline",
+      "training_type": "LOCAL",
+      "model_architecture": "ML_REGRESSION",
+      "local_loss": 15.681600000000007,
+      "local_accuracy": 0.0,
+      "local_mape": null,
+      "local_rmse": 3.960000000000001,
+      "local_r2": 0.0,
+      "is_global": 0,
+      "is_uploaded": 0,
+      "is_mask_uploaded": 0,
+      "model_hash": null,
+      "hash_algorithm": "sha256",
+      "weights_hash": null,
+      "training_schema": {
+        "required_columns": [
+          "er_visits",
+          "admissions",
+          "discharges",
+          "icu_sedation_level_avg",
+          "emergency_wait_time_avg",
+          "staff_count",
+          "flu_cases"
+        ],
+        "feature_columns": [
+          "er_visits",
+          "admissions",
+          "discharges",
+          "icu_sedation_level_avg",
+          "emergency_wait_time_avg",
+          "staff_count",
+          "flu_cases"
+        ],
+        "excluded_columns": [
+          "timestamp",
+          "bed_occupancy"
+        ],
+        "target_column": "bed_occupancy",
+        "num_features": 7
+      },
+      "created_at": "2026-02-27 13:05:17",
+      "updated_at": "2026-02-27 13:05:17"
+    },
+    {
+      "id": 3,
+      "hospital_id": 11,
+      "dataset_id": 5,
+      "round_number": 0,
+      "round_id": null,
+      "model_path": "D:/federated-healthcare/models\\VERIFY-ML\\pipeline_metadata.json",
+      "model_type": "multi_model_gradient_boosting",
+      "training_type": "LOCAL",
+      "model_architecture": "ML_REGRESSION",
+      "local_loss": 10.034165887316549,
+      "local_accuracy": 0.18904454172943275,
+      "local_mape": null,
+      "local_rmse": 3.1676751549545843,
+      "local_r2": 0.18904454172943275,
+      "is_global": 0,
+      "is_uploaded": 0,
+      "is_mask_uploaded": 0,
+      "model_hash": null,
+      "hash_algorithm": "sha256",
+      "weights_hash": null,
+      "training_schema": {
+        "required_columns": [
+          "er_visits",
+          "admissions",
+          "discharges",
+          "icu_total_beds",
+          "staff_count",
+          "avg_wait_time",
+          "nurse_count",
+          "bed_occupancy"
+        ],
+        "feature_columns": [
+          "er_visits",
+          "admissions",
+          "discharges",
+          "icu_total_beds",
+          "staff_count",
+          "avg_wait_time",
+          "nurse_count",
+          "bed_occupancy"
+        ],
+        "excluded_columns": [
+          "icu_ventilator_usage",
+          "timestamp"
+        ],
+        "target_column": "icu_ventilator_usage",
+        "num_features": 8,
+        "training_type": "LOCAL",
+        "model_architecture": "ML_REGRESSION",
+        "candidate_models": [
+          "linear",
+          "random_forest",
+          "gradient_boosting",
+          "ridge",
+          "lasso"
+        ],
+        "best_model": "gradient_boosting",
+        "ensemble_models": [],
+        "selection_strategy": "best",
+        "multi_model_metrics": {
+          "linear": {
+            "r2": 0.006001887282026552,
+            "rmse": 3.5069931499387064,
+            "mae": 3.0183298137849164,
+            "mape": 23.80418725928595
+          },
+          "random_forest": {
+            "r2": 0.17001611026208674,
+            "rmse": 3.2046231746109655,
+            "mae": 2.22952483856586,
+            "mape": 16.486696012581582
+          },
+          "gradient_boosting": {
+            "r2": 0.18904454172943275,
+            "rmse": 3.1676751549545843,
+            "mae": 1.9540785224907617,
+            "mape": 12.706718659637106
+          },
+          "ridge": {
+            "r2": 0.00601139236119852,
+            "rmse": 3.5069763821366307,
+            "mae": 3.0183127374017746,
+            "mape": 23.804105824649742
+          },
+          "lasso": {
+            "r2": 0.005112113943527952,
+            "rmse": 3.5085624341082418,
+            "mae": 3.032121430835941,
+            "mape": 24.12292137766133
+          }
+        },
+        "model_paths": {
+          "linear": "D:/federated-healthcare/models\\VERIFY-ML\\linear.pkl",
+          "random_forest": "D:/federated-healthcare/models\\VERIFY-ML\\random_forest.pkl",
+          "gradient_boosting": "D:/federated-healthcare/models\\VERIFY-ML\\gradient_boosting.pkl",
+          "ridge": "D:/federated-healthcare/models\\VERIFY-ML\\ridge.pkl",
+          "lasso": "D:/federated-healthcare/models\\VERIFY-ML\\lasso.pkl",
+          "metadata": "D:/federated-healthcare/models\\VERIFY-ML\\pipeline_metadata.json"
+        }
+      },
+      "created_at": "2026-02-27 14:50:24",
+      "updated_at": "2026-02-27 14:50:24"
+    }
+  ]
+}

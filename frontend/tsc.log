@@ -1,0 +1,12 @@
+src/components/Charts/BarChart.tsx(1,1): error TS1127: Invalid character.
+src/components/Charts/BarChart.tsx(1,17): error TS1002: Unterminated string literal.
+src/components/Charts/LineChart.tsx(1,1): error TS1127: Invalid character.
+src/components/Charts/LineChart.tsx(1,17): error TS1002: Unterminated string literal.
+src/components/DataTable.tsx(1,1): error TS1127: Invalid character.
+src/components/DataTable.tsx(1,17): error TS1002: Unterminated string literal.
+src/components/Navbar.tsx(1,1): error TS1127: Invalid character.
+src/components/Navbar.tsx(1,17): error TS1002: Unterminated string literal.
+src/components/Sidebar.tsx(1,1): error TS1127: Invalid character.
+src/components/Sidebar.tsx(1,17): error TS1002: Unterminated string literal.
+src/types/hospital.ts(1,1): error TS1127: Invalid character.
+src/types/hospital.ts(1,17): error TS1002: Unterminated string literal.
