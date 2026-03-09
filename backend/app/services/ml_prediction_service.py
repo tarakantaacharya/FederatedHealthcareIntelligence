@@ -94,12 +94,11 @@ class MLPredictionService:
         Raises:
             HTTPException: If model not found, wrong architecture, or validation fails
         """
-        # Get model
+        # Get model (allow LOCAL, FEDERATED, and approved GLOBAL models)
+        # Global models have hospital_id == None, local models have hospital_id == hospital.id
         model = db.query(ModelWeights).filter(
             ModelWeights.id == model_id,
-            ModelWeights.hospital_id == hospital.id,
-            ModelWeights.training_type == "LOCAL",
-            ModelWeights.is_global == False
+            (ModelWeights.hospital_id == hospital.id) | (ModelWeights.hospital_id == None)
         ).first()
         
         if not model:
@@ -220,21 +219,67 @@ class MLPredictionService:
                 detail=f"Model file not found at {model.model_path}"
             )
         
-        # Check if this is a multi-model pipeline
+        # Detect federated JSON weight artifacts even if DB flags drift.
+        # Some approved/distributed models are stored as a single JSON file with "weights".
+        is_json_artifact = str(model.model_path).lower().endswith('.json')
+        is_global_federated = (model.is_global and model.hospital_id is None)
+        if is_json_artifact:
+            try:
+                import json
+                with open(model.model_path, 'r') as f:
+                    json_probe = json.load(f)
+                if isinstance(json_probe, dict) and isinstance(json_probe.get("weights"), dict):
+                    is_global_federated = True
+            except Exception:
+                # Non-weight JSON files should continue through normal branch checks.
+                pass
+        
+        # Check if this is a multi-model pipeline (only for LOCAL models)
         is_multi_model = (
-            "candidate_models" in model.training_schema or
-            "best_model" in model.training_schema
+            not is_global_federated and
+            model.training_schema and
+            ("candidate_models" in model.training_schema or "best_model" in model.training_schema)
         )
         
-        if is_multi_model:
+        if is_global_federated:
+            # Load global federated model (JSON with averaged weights)
+            try:
+                import json
+                with open(model.model_path, 'r') as f:
+                    weights_data = json.load(f)
+                
+                # Create sklearn LinearRegression model and set coefficients
+                from sklearn.linear_model import LinearRegression
+                sklearn_model = LinearRegression()
+                
+                # Set the coefficients from aggregated weights
+                sklearn_model.coef_ = np.array(weights_data["weights"].get("coef", []))
+                sklearn_model.intercept_ = weights_data["weights"].get("intercept", 0.0)
+                
+                print(f"[ML_PREDICT] Loaded global federated model from {model.model_path}")
+                print(f"[ML_PREDICT] Round {weights_data.get('round_number')}, {weights_data.get('num_hospitals')} hospitals")
+                
+            except Exception as e:
+                raise HTTPException(
+                    status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                    detail=f"Failed to load global federated model: {str(e)}"
+                )
+        elif is_multi_model:
             # Load multi-model pipeline
             try:
-                # Model path is the metadata.json file
-                # Extract directory from path
-                if model.model_path.endswith(('multi_model_metadata.json', 'pipeline_metadata.json')):
+                # Model path can be a pipeline metadata file or a model directory.
+                # For JSON artifacts, only use pipeline loader when pipeline metadata exists.
+                if str(model.model_path).lower().endswith('pipeline_metadata.json') or str(model.model_path).lower().endswith('multi_model_metadata.json'):
                     model_dir = os.path.dirname(model.model_path)
+                elif str(model.model_path).lower().endswith('.json'):
+                    raise HTTPException(
+                        status_code=status.HTTP_400_BAD_REQUEST,
+                        detail=(
+                            f"Model {model_id} points to JSON weights artifact, not a pipeline directory: "
+                            f"{model.model_path}"
+                        )
+                    )
                 else:
-                    # Assume it's already a directory
                     model_dir = model.model_path
                 
                 pipeline = MultiModelMLPipeline()
@@ -286,11 +331,13 @@ class MLPredictionService:
             )
         
         # Build response
+        model_type = "global_federated" if is_global_federated else ("multi_model" if is_multi_model else "single_model")
+        
         response = {
             "model_architecture": "ML_REGRESSION",
             "model_id": model_id,
-            "training_type": model.training_type or "LOCAL",
-            "model_type": "multi_model" if is_multi_model else "single_model",
+            "training_type": model.training_type or "FEDERATED",
+            "model_type": model_type,
             "target_column": target_column,
             "prediction": prediction_value,
             "input_features": effective_features,
@@ -379,11 +426,10 @@ class MLPredictionService:
         Returns:
             Validation result dictionary
         """
-        # Get model
+        # Get model (allow LOCAL, FEDERATED, and approved GLOBAL models)
+        # No hospital filter needed for validation - any model ID is valid
         model = db.query(ModelWeights).filter(
-            ModelWeights.id == model_id,
-            ModelWeights.training_type == "LOCAL",
-            ModelWeights.is_global == False
+            ModelWeights.id == model_id
         ).first()
         
         if not model:
@@ -483,12 +529,11 @@ class MLPredictionService:
         Returns:
             Saved record information
         """
-        # Get model to extract metadata
+        # Get model to extract metadata (allow LOCAL, FEDERATED, and approved GLOBAL models)
+        # Global models have hospital_id == None, local models have hospital_id == hospital.id
         model = db.query(ModelWeights).filter(
             ModelWeights.id == model_id,
-            ModelWeights.hospital_id == hospital.id,
-            ModelWeights.training_type == "LOCAL",
-            ModelWeights.is_global == False
+            (ModelWeights.hospital_id == hospital.id) | (ModelWeights.hospital_id == None)
         ).first()
         
         if not model:

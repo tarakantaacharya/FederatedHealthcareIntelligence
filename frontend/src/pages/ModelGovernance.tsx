@@ -53,6 +53,7 @@ interface PendingModel {
   model_type: string;
   accuracy: number | null;
   loss: number | null;
+  mape: number | null;
   num_participants: number;
   created_at: string;
 }
@@ -187,7 +188,7 @@ const ModelGovernance: React.FC = () => {
   };
 
   const handleApprovePending = async (model: PendingModel) => {
-    const resolvedMape = model.loss ?? 0;
+    const resolvedMape = model.mape ?? 0;
     const resolvedParticipants = model.num_participants ?? 0;
 
     setRound(model.round_number);
@@ -528,7 +529,7 @@ const ModelGovernance: React.FC = () => {
                         {model.mape !== null && model.mape !== undefined
                           ? (
                               <span className="font-semibold text-green-700">
-                                {(model.mape * 100).toFixed(2)}%
+                                {Number(model.mape).toFixed(2)}%
                               </span>
                             )
                           : <span className="text-gray-500">N/A</span>}

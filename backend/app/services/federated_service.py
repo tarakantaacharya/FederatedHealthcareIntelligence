@@ -250,6 +250,9 @@ class FederatedService:
             model_architecture=training_round.model_type,  # Set architecture (TFT or ML_REGRESSION)
             local_loss=avg_loss,
             local_accuracy=avg_accuracy,
+            local_mape=float(avg_mape) if avg_mape is not None else None,
+            local_rmse=float(avg_rmse) if avg_rmse is not None else None,
+            local_r2=float(avg_r2) if avg_r2 is not None else None,
             training_schema=training_schema,  # Store schema from hospitals
             is_global=True,
             model_hash=model_hash,
@@ -511,6 +514,9 @@ class FederatedService:
             model_type="sklearn_baseline_fedavg",
             local_loss=avg_loss,
             local_accuracy=avg_accuracy,
+            local_mape=float(avg_mape) if avg_mape is not None else None,
+            local_rmse=float(avg_rmse) if avg_rmse is not None else None,
+            local_r2=float(avg_r2) if avg_r2 is not None else None,
             training_schema=training_schema,  # Store schema from hospitals
             is_global=True,
             model_hash=model_hash

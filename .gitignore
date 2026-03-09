@@ -39,6 +39,7 @@ backend/htmlcov/
 backend/.tox/
 backend/storage/
 backend/logs/
+backend/config.py
 
 # Frontend artifacts
 frontend/.env

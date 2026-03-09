@@ -1559,7 +1559,7 @@ const ResultsIntelligenceDashboard: React.FC = () => {
                   {(centralData.global_overview?.prediction_volume_analytics?.predictions_per_hospital || []).map((entry: any) => (
                     <div key={entry.hospital_id} className="border rounded p-3">
                       <p className="font-medium text-sm">{entry.hospital_name}</p>
-                      <p className="text-xs text-gray-600">Predictions: {entry.predictions} • High Risk Frequency: {pct(entry.high_risk_frequency)}</p>
+                      <p className="text-xs text-gray-600">Predictions: {entry.predictions} • Medium Risk Frequency: {pct(entry.high_risk_frequency)}</p>
                     </div>
                   ))}
                 </div>
@@ -1588,7 +1588,7 @@ const ResultsIntelligenceDashboard: React.FC = () => {
               </div>
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 <div className="border rounded p-4">
-                  <h4 className="font-medium text-sm mb-2">Risk Heatmap by Hospital</h4>
+                  <h4 className="font-medium text-sm mb-2">Medium Risk Heatmap by Hospital</h4>
                   <div className="space-y-1 max-h-44 overflow-y-auto">
                     {(centralData.global_overview?.prediction_results_intelligence?.central_aggregated_view?.risk_heatmap_by_hospital || []).map((entry: any) => (
                       <div key={entry.hospital_id} className="text-xs flex justify-between border-b pb-1">
@@ -1599,7 +1599,7 @@ const ResultsIntelligenceDashboard: React.FC = () => {
                   </div>
                 </div>
                 <div className="border rounded p-4">
-                  <h4 className="font-medium text-sm mb-2">High-Risk Frequency Trend</h4>
+                  <h4 className="font-medium text-sm mb-2">Medium-Risk Frequency Trend</h4>
                   <div className="space-y-1 max-h-44 overflow-y-auto">
                     {(centralData.global_overview?.prediction_results_intelligence?.central_aggregated_view?.high_risk_frequency_trend || []).map((entry: any) => (
                       <div key={entry.month} className="text-xs flex justify-between border-b pb-1">
@@ -1615,28 +1615,28 @@ const ResultsIntelligenceDashboard: React.FC = () => {
             {/* PREDICTION INTELLIGENCE VISUAL DASHBOARDS */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               <BarChart
-                title="🔥 Risk Frequency Heatmap by Hospital"
+                title="🔥 Medium Risk Frequency Heatmap by Hospital"
                 labels={(centralData.global_overview?.prediction_results_intelligence?.central_aggregated_view?.risk_heatmap_by_hospital || []).map((h: any) => h.hospital_name)}
                 datasets={[
                   {
-                    label: 'High Risk %',
+                    label: 'Medium Risk %',
                     data: (centralData.global_overview?.prediction_results_intelligence?.central_aggregated_view?.risk_heatmap_by_hospital || []).map((h: any) => (h.high_risk_frequency ?? 0) * 100),
-                    backgroundColor: (centralData.global_overview?.prediction_results_intelligence?.central_aggregated_view?.risk_heatmap_by_hospital || []).map((h: any) => h.is_outlier ? '#ef4444' : '#f59e0b'),
+                    backgroundColor: (centralData.global_overview?.prediction_results_intelligence?.central_aggregated_view?.risk_heatmap_by_hospital || []).map((h: any) => h.is_outlier ? '#d97706' : '#fbbf24'),
                   },
                 ]}
                 horizontal
-                yAxisLabel="High Risk %"
+                yAxisLabel="Medium Risk %"
                 height={260}
               />
 
               <LineChart
-                title="📈 High-Risk Frequency Trend Over Time"
+                title="📈 Medium-Risk Frequency Trend Over Time"
                 labels={(centralData.global_overview?.prediction_results_intelligence?.central_aggregated_view?.high_risk_frequency_trend || []).map((t: any) => t.month)}
                 datasets={[
                   {
-                    label: 'High Risk Predictions',
+                    label: 'Medium Risk Predictions',
                     data: (centralData.global_overview?.prediction_results_intelligence?.central_aggregated_view?.high_risk_frequency_trend || []).map((t: any) => t.high_risk_proxy ?? 0),
-                    borderColor: '#ef4444',
+                    borderColor: '#f59e0b',
                     fill: true,
                   },
                 ]}

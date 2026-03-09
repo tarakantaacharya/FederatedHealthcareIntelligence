@@ -33,9 +33,12 @@ class ResultsIntelligenceService:
     """Static analytics methods for hospital and central performance intelligence."""
 
     STANDARD_HORIZONS = ["6h", "12h", "24h", "48h", "72h", "168h"]
-    MIN_PARTICIPATION_RATE = 0.5
-    ACCURACY_DROP_THRESHOLD = 0.03
-    DP_EPSILON_ALERT_THRESHOLD = 0.5
+    # Tuned to reduce over-sensitive risk escalation in central dashboard indicators.
+    MIN_PARTICIPATION_RATE = 0.4
+    ACCURACY_DROP_THRESHOLD = 0.05
+    DP_EPSILON_ALERT_THRESHOLD = 0.8
+    CRITICAL_GRADIENT_DIVERGENCE_THRESHOLD = 0.35
+    CRITICAL_WEIGHT_VARIANCE_THRESHOLD = 0.06
 
     @staticmethod
     def _to_float(value: Any) -> Optional[float]:
@@ -299,7 +302,11 @@ class ResultsIntelligenceService:
                     health_icon = "⚠"
                 health_reasons.append("DP epsilon threshold exceeded")
 
-            if gradient_divergence_score > 0.2 or model_weight_variance > 0.03:
+            # Escalate to CRITICAL only for strong combined instability signals.
+            if (
+                gradient_divergence_score > ResultsIntelligenceService.CRITICAL_GRADIENT_DIVERGENCE_THRESHOLD
+                and model_weight_variance > ResultsIntelligenceService.CRITICAL_WEIGHT_VARIANCE_THRESHOLD
+            ):
                 health_label = "CRITICAL_DEGRADATION"
                 health_icon = "🔴"
                 health_reasons.append("Weight/gradient divergence abnormal")

@@ -2,6 +2,7 @@
 Model Governance Routes (Phase 29)
 Admin-only approval and signing of federated models
 """
+import json
 from fastapi import APIRouter, Depends, Query, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import Optional, Dict, Any
@@ -167,6 +168,10 @@ async def get_pending_global_models(
             if actual_participants:
                 num_participants = len(actual_participants)
 
+        pending_mape = model.local_mape
+        if pending_mape is None and training_round:
+            pending_mape = training_round.average_mape
+
         pending.append({
             "model_id": model.id,
             "round_number": model.round_number,
@@ -174,6 +179,7 @@ async def get_pending_global_models(
             "model_type": model.model_type,
             "accuracy": model.local_accuracy,
             "loss": model.local_loss,
+            "mape": pending_mape,
             "num_participants": num_participants,
             "created_at": str(model.created_at)
         })
@@ -222,6 +228,22 @@ async def get_approved_global_models(
                 num_participants = len(actual_participants)
 
         if model:
+            approved_mape = model.local_mape
+            if approved_mape is None and training_round:
+                approved_mape = training_round.average_mape
+
+            # Final fallback: use the MAPE that was evaluated at approval time.
+            if approved_mape is None and record.policy_details:
+                try:
+                    policy_details = json.loads(record.policy_details)
+                    approved_mape = (
+                        policy_details.get("results", {}).get("mape")
+                        if isinstance(policy_details, dict)
+                        else None
+                    )
+                except (json.JSONDecodeError, TypeError):
+                    approved_mape = None
+
             approved.append({
                 "model_id": model.id,
                 "governance_id": record.id,
@@ -230,7 +252,7 @@ async def get_approved_global_models(
                 "model_type": model.model_type,
                 "accuracy": model.local_accuracy,
                 "loss": model.local_loss,
-                "mape": model.local_mape,
+                "mape": approved_mape,
                 "num_participants": training_round.num_participating_hospitals if training_round else 0,
                 "approved_by": record.approved_by,
                 "signature": record.signature,

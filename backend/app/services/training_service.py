@@ -560,6 +560,7 @@ class TrainingService:
                 
                 # Privacy metrics from TFTForecaster
                 epsilon = train_result.get('epsilon_spent', 0.5)
+                grad_norm_pre = float(train_result.get('grad_norm_pre', max_grad_norm))
                 
                 print(f"[TFT METRICS] Train Loss: {avg_train_loss:.4f}, MAPE: {local_mape:.2f}%, "
                       f"RMSE: {local_rmse:.4f}, R2: {local_r2:.4f}, Accuracy: {local_accuracy:.4f}")
@@ -791,6 +792,7 @@ class TrainingService:
                     'training_type': training_type,
                     'model_architecture': model_architecture,
                     'budget_message': f"Round {round_number} fresh allocation: {epsilon_budget} epsilon (consumed {float(epsilon):.4f})" if training_type == "FEDERATED" else f"LOCAL training (consumed {float(epsilon):.4f} epsilon)",
+                    'grad_norm_pre': grad_norm_pre,
                     'model_path': model_path,
                     'dataset_id': dataset_id,
                     'target_column': target_column,
@@ -841,6 +843,7 @@ class TrainingService:
                         'epsilon_budget': epsilon_budget,
                         'delta': delta,
                         'max_grad_norm': max_grad_norm,
+                        'grad_norm_pre': grad_norm_pre,
                         'noise_multiplier': noise_multiplier,
                         'num_epochs': epochs,
                         'batch_size': batch_size,

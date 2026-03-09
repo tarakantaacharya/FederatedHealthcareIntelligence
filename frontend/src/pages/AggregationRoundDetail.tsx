@@ -485,14 +485,6 @@ const AggregationRoundDetail: React.FC = () => {
                         : 'N/A'}
                     </p>
                   </div>
-                  <div className="bg-gray-50 p-3 rounded">
-                    <p className="text-xs text-gray-600 uppercase">Local Accuracy</p>
-                    <p className="text-sm font-semibold text-gray-900">
-                      {globalModel.local_accuracy !== null && globalModel.local_accuracy !== undefined
-                        ? aggregationService.formatAccuracy(globalModel.local_accuracy)
-                        : 'N/A'}
-                    </p>
-                  </div>
                 </div>
               )}
             </div>

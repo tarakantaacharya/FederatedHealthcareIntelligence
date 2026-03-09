@@ -313,7 +313,7 @@ const RoundPolicyForm: React.FC<RoundPolicyFormProps> = ({ onSubmit, loading = f
             />
             <span className="ml-3 text-sm text-gray-700">
               <span className="font-medium">TFT (Temporal Fusion Transformer)</span>
-              <p className="text-gray-500">Deep learning model with attention mechanism for time series (3-horizon forecast)</p>
+              <p className="text-gray-500">Deep learning model with attention mechanism for time series (5-horizon forecast)</p>
             </span>
           </label>
 
@@ -326,7 +326,7 @@ const RoundPolicyForm: React.FC<RoundPolicyFormProps> = ({ onSubmit, loading = f
             />
             <span className="ml-3 text-sm text-gray-700">
               <span className="font-medium">ML_REGRESSION (Baseline)</span>
-              <p className="text-gray-500">Traditional machine learning (Random Forest + feature engineering)</p>
+              <p className="text-gray-500">Ensemble machine learning (Multimodel + feature engineering)</p>
             </span>
           </label>
         </div>
